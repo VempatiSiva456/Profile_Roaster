@@ -1,0 +1,154 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: black;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-left: 15%;
+  padding-right: 15%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark {
+  background-color: #121212;
+  color: white;
+}
+
+.app.light {
+  background-color: #ffffff;
+  color: black;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  margin-bottom: 2rem;
+}
+
+input[type="url"],
+input[type="text"] {
+  width: 80%;
+  font-size: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 0.1rem solid #007bff;
+  border-radius: 0.25rem;
+  background-color: #f9f9f9;
+  color: black;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark input[type="url"],
+.app.dark input[type="text"] {
+  background-color: #333;
+  color: white;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #999;
+}
+
+.roast-item {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.625rem;
+  box-shadow: 0 0.0625rem 2.5rem rgba(0, 0, 0, 0.1);
+}
+
+.app.dark .roast-item {
+  background: #333;
+  color: white;
+}
+
+img {
+  border-radius: 50%;
+  width: 3.125rem;
+  height: 3.125rem;
+  margin-right: 0.625rem;
+}
+
+.error {
+  color: red;
+}
+
+.toggle-buttons {
+  position: relative;
+  width: 80%;
+  max-width: 20rem;
+  height: 3rem;
+  margin: 1.25rem auto;
+  border: 0.125rem solid #007bff;
+  border-radius: 0%;
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.app.dark .toggle-buttons {
+  background-color: #333;
+}
+
+.toggle-option {
+  flex: 1;
+  text-align: center;
+  z-index: 1;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #007bff;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.3s;
+  outline: none;
+}
+
+.app.dark .toggle-option {
+  color: white;
+}
+
+.toggle-option:focus {
+  outline: none;
+}
+
+.toggle-option.active {
+  color: white;
+  border: none;
+}
+
+.toggle-option:disabled {
+  cursor: not-allowed;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 0%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.app.dark .slider {
+  background-color: #4caf50;
+}
