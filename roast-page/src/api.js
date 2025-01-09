@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-const API_URL = "https://profile-roaster.onrender.com/api";
+const API_URL = "https://linkedin-roaster.onrender.com/api";
 
 const getDeviceId = () => {
     let deviceId = localStorage.getItem("deviceId");
