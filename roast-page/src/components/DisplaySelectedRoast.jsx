@@ -3,8 +3,16 @@ import "../App.css";
 
 const DisplaySelectedRoast = ({ roast, onVote }) => {
   if (!roast) {
-    return <div className="no-selection"><center>Please select a roast or create one!</center></div>;
+    return (
+      <div className="no-selection">
+        <center>Please select a roast or create one!</center>
+      </div>
+    );
   }
+
+  const linkedinShareUrl = new URL("/feed/", "https://www.linkedin.com");
+  linkedinShareUrl.searchParams.append("shareActive", "true");
+  linkedinShareUrl.searchParams.append("text", `${roast.roast}`);
 
   const handleVote = () => {
     onVote(roast._id);
@@ -13,7 +21,10 @@ const DisplaySelectedRoast = ({ roast, onVote }) => {
   return (
     <div className="selected-roast">
       <h2>{roast.name}</h2>
-      <img src={roast.picture || "/src/assets/no-profile.png"} alt={roast.name} />
+      <img
+        src={roast.picture || "/src/assets/no-profile.png"}
+        alt={roast.name}
+      />
       {roast.roast.split("\n").map((para, index) => (
         <p key={index}>{para}</p>
       ))}
@@ -28,6 +39,10 @@ const DisplaySelectedRoast = ({ roast, onVote }) => {
           👍
         </button>
         <span> {roast.voteCount} votes</span>
+        <br></br>
+        <br></br>
+        <a href={linkedinShareUrl}>Share on Linkedin</a>
+        <br></br>
       </div>
     </div>
   );
