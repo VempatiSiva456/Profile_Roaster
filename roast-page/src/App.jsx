@@ -11,6 +11,7 @@ const App = () => {
   const [selectedRoast, setSelectedRoast] = useState(null);
   const [sortByVotes, setSortByVotes] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [totalRoasts, setTotalRoasts] = useState(0);
   const displayRef = useRef(null);
 
   const { isDarkMode, toggleTheme } = useTheme(); 
@@ -19,6 +20,7 @@ const App = () => {
     const response = await getRoasts();
     if (response.success) {
       setRoasts(response.roasts);
+      setTotalRoasts(response.roasts.length);
     } else {
       console.error("Failed to fetch roasts:", response.message);
     }
@@ -61,10 +63,19 @@ const App = () => {
   };
 
   const filteredRoasts = roasts
-    .filter((roast) =>
-      roast.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .sort((a, b) => (sortByVotes ? b.voteCount - a.voteCount : b.date - a.date));
+  .filter((roast) =>
+    roast.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+  .sort((a, b) => {
+    if (sortByVotes) {
+      return b.voteCount - a.voteCount; 
+    } else {
+      const recentTimeA = new Date(a.recent_time);
+      const recentTimeB = new Date(b.recent_time);
+      return recentTimeB - recentTimeA;
+    }
+  });
+
 
   useEffect(() => {
     fetchRoasts();
@@ -72,9 +83,11 @@ const App = () => {
 
   return (
     <div className={`app ${isDarkMode ? "dark" : "light"}`}>
+    <button onClick={toggleTheme} className="theme-toggle">
+      {isDarkMode ? "🌞" : "🌙"}
+    </button>
       <br></br>
-      <br></br>
-      <h1>😎 LinkedIn Roast Generator 🔥</h1>
+      <center><h2>😎 LinkedIn Roast Generator 🔥</h2></center>
       <RoastForm onRoastCreated={fetchRoasts} setSelectedRoast={setSelectedRoast} />
 
       <div ref={displayRef}>
@@ -84,6 +97,8 @@ const App = () => {
       <br></br>
       <br></br>
 
+      <h2><center><u>Total Roasts Till Now</u>: <b> {totalRoasts}</b> 🔥</center></h2>
+      <br/>
       <div>
         <input
           type="text"
@@ -122,11 +137,6 @@ const App = () => {
       />
 
       <br></br>
-      <br></br>
-
-      <button onClick={toggleTheme} className="theme-toggle">
-        {isDarkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
-      </button>
     </div>
   );
 };

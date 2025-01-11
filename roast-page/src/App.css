@@ -56,7 +56,7 @@ button {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 0.25rem;
   cursor: pointer;
 }
@@ -151,4 +151,101 @@ img {
 
 .app.dark .slider {
   background-color: #4caf50;
+}
+
+.share-button-container {
+  margin-top: 16px;
+}
+
+.linkedin-share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #0077B5;
+  color: white;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.linkedin-share-button:hover {
+  background-color: #005983;
+}
+
+.linkedin-share-button svg {
+  vertical-align: middle;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px; 
+  right: 20px; 
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000; 
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: #005983;
+  transform: scale(1.1); 
+}
+
+.app.dark .theme-toggle {
+  background-color: #4caf50;
+}
+
+.app.dark .theme-toggle:hover {
+  background-color: #357a38;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: #005983;
+}
+
+.modal-buttons button:focus {
+  outline: none;
 }

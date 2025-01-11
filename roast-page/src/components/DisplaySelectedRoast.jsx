@@ -1,4 +1,5 @@
 import React from "react";
+import { FaLinkedin } from "react-icons/fa";
 import "../App.css";
 
 const DisplaySelectedRoast = ({ roast, onVote }) => {
@@ -40,8 +41,17 @@ const DisplaySelectedRoast = ({ roast, onVote }) => {
         </button>
         <span> {roast.voteCount} votes</span>
         <br></br>
-        <br></br>
-        <a href={linkedinShareUrl}>Share on Linkedin</a>
+        <div className="share-button-container">
+          <a
+            href={linkedinShareUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="linkedin-share-button"
+          >
+            <FaLinkedin size={20} style={{ marginRight: "8px" }} />
+            Share
+          </a>
+        </div>
         <br></br>
       </div>
     </div>

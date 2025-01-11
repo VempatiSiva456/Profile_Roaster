@@ -46,10 +46,19 @@ const createRoast = async (url) => {
 };
 
 
-const getRoasts = async (sortByVotes = false) => {
-  const sortCriteria = sortByVotes ? { votes: -1 } : { recent_time: -1 };
-  return await Roast.find().sort(sortCriteria);
+const getRoasts = async (sortByVotes, deviceId) => {
+  const sortCriteria = sortByVotes ? { voteCount: -1 } : { recent_time: -1 };
+
+  const roasts = await Roast.find().sort(sortCriteria);
+
+  const enrichedRoasts = roasts.map((roast) => ({
+    ...roast.toObject(),
+    hasVoted: roast.votes.some((vote) => vote.deviceId === deviceId),
+  }));
+
+  return enrichedRoasts;
 };
+
 
 const upvoteRoast = async (id, deviceId) => {
   const roast = await Roast.findById(id);

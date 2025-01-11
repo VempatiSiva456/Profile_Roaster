@@ -33,10 +33,11 @@ const createRoast = async (req, res) => {
 
 
 const getRoasts = async (req, res) => {
-  const sortByVotes = req.query.sortByVotes === "true";
+  const {sortByVotes} = req.query;
+  const deviceId = req.headers["device-id"];
 
   try {
-    const roasts = await roastService.getRoasts(sortByVotes);
+    const roasts = await roastService.getRoasts(sortByVotes, deviceId);
     res.status(200).json({ success: true, roasts });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

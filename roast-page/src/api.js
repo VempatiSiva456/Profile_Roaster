@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-const API_URL = "http://localhost:8000/api";
+const API_URL = "https://linkedin-roaster-1owb.onrender.com/api";
 
 const getDeviceId = () => {
     let deviceId = localStorage.getItem("deviceId");
@@ -20,7 +20,13 @@ export const createRoast = async (url) => {
 };
 
 export const getRoasts = async (sortByVotes = false) => {
-  const response = await fetch(`${API_URL}/getRoasts?sortByVotes=${sortByVotes}`);
+  const deviceId = getDeviceId();
+  const response = await fetch(`${API_URL}/getRoasts?sortByVotes=${sortByVotes}`, {
+    headers: {
+      "Content-Type": "application/json",
+      "device-id": deviceId,
+    },
+  });
   return response.json();
 };
 

@@ -35,6 +35,7 @@ const RoastForm = ({ onRoastCreated, setSelectedRoast }) => {
   };
 
   return (
+    <center>
     <form onSubmit={handleSubmit}>
       <input
         type="url"
@@ -46,11 +47,21 @@ const RoastForm = ({ onRoastCreated, setSelectedRoast }) => {
 
       <span>    </span>
 
+      <br></br>
+
       <button type="submit" disabled={loading}>
         {loading ? "Roasting...🤞🏼" : "Roast 🤘🏼"}
       </button>
+      <span>    </span>
+      <span>    </span>
+      <span>    </span>
+      <button type="submit" style={{backgroundColor: "black", color: "white"}} disabled={loading}>
+        {loading ? "Optimising...💥" : "Optimise ✨"}
+      </button>
+      <br></br>
       {error && <p className="error">{error}</p>}
     </form>
+    </center>
   );
 };
 
