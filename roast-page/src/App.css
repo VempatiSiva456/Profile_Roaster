@@ -181,6 +181,30 @@ img {
   vertical-align: middle;
 }
 
+.twitter-share-button{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #0077B5;
+  color: white;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.twitter-share-button:hover {
+  background-color: #005983;
+}
+
+.twitter-share-button svg {
+  vertical-align: middle;
+}
+
 .theme-toggle {
   position: fixed;
   top: 20px; 

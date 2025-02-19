@@ -1,5 +1,5 @@
 import React from "react";
-import { FaLinkedin } from "react-icons/fa";
+import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import "../App.css";
 
 const DisplaySelectedRoast = ({ roast, onVote }) => {
@@ -14,6 +14,10 @@ const DisplaySelectedRoast = ({ roast, onVote }) => {
   const linkedinShareUrl = new URL("/feed/", "https://www.linkedin.com");
   linkedinShareUrl.searchParams.append("shareActive", "true");
   linkedinShareUrl.searchParams.append("text", `${roast.roast}`);
+
+  const twitterShareUrl = new URL("https://twitter.com/intent/tweet");
+  twitterShareUrl.searchParams.append("text", roast.roast);
+  twitterShareUrl.searchParams.append("url", window.location.href);
 
   const handleVote = () => {
     onVote(roast._id);
@@ -40,7 +44,7 @@ const DisplaySelectedRoast = ({ roast, onVote }) => {
           👍
         </button>
         <span> {roast.voteCount} votes</span>
-        <br></br>
+        <br />
         <div className="share-button-container">
           <a
             href={linkedinShareUrl}
@@ -49,10 +53,21 @@ const DisplaySelectedRoast = ({ roast, onVote }) => {
             className="linkedin-share-button"
           >
             <FaLinkedin size={20} style={{ marginRight: "8px" }} />
-            Share
+            Share on LinkedIn
           </a>
         </div>
-        <br></br>
+        <div className="share-button-container">
+          <a
+            href={twitterShareUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="twitter-share-button"
+          >
+            <FaTwitter size={20} style={{ marginRight: "8px" }} />
+            Share on Twitter
+          </a>
+        </div>
+        <br />
       </div>
     </div>
   );
