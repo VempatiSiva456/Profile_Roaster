@@ -53,7 +53,7 @@ const DisplaySelectedRoast = ({ roast, onVote }) => {
             className="linkedin-share-button"
           >
             <FaLinkedin size={20} style={{ marginRight: "8px" }} />
-            Share on LinkedIn
+            Share
           </a>
         </div>
         <div className="share-button-container">
@@ -64,7 +64,7 @@ const DisplaySelectedRoast = ({ roast, onVote }) => {
             className="twitter-share-button"
           >
             <FaTwitter size={20} style={{ marginRight: "8px" }} />
-            Share on Twitter
+            Share
           </a>
         </div>
         <br />
